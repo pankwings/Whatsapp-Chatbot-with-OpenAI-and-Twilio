@@ -7,17 +7,32 @@ This is a Flask application that uses OpenAI's GPT-3 language model to provide n
 Please note that this project is currently under development, and significant changes may be made in the future.
 
 ### Technologies Used
-Python
-Flask
-OpenAI API
-Twilio API
-dotenv
+- Python
+- Flask
+- OpenAI API
+- Twilio API
+- dotenv
 
 ### Getting Started
-To use this application, you will need to have API keys for OpenAI and Twilio. Once you have those, you can run the application locally by running python app.py from the command line.
+To use this application, you will need to have API keys for OpenAI and Twilio.NGROK for local testing. Once you have those, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Create a .env file in the project directory and set your OpenAI API key and Twilio account details as environment variables:
+```
+OPENAI_API_KEY=<your OpenAI API key>
+TWILIO_ACCOUNT_SID=<your Twilio account SID>
+TWILIO_AUTH_TOKEN=<your Twilio auth token>
+TWILIO_PHONE_NUMBER=<your Twilio phone number>
+```
+3. Build and start the chatbot containers by running 'docker-compose build' followed by 'docker-compose up -d'.
+4. NGROK provides a way to expose your local web server to the internet by creating a secure tunnel between your local machine and an external server. You can test and demonstrate it operation with NGROK before deploying it to a public server 'ngrok http 5000'.
+5. To configure the Twilio Sandbox to work with your NGROK tunnel, open the Twilio web console page. In the "Messaging" section, find the "A MESSAGE COMES IN" field and enter your NGROK obtain web address followed by "/incoming" (e.g. https:\\afefeqe.ngrox.com\incoming) in the "URL" field, set the "HTTP Method" to "POST", and save your changes. This will forward incoming messages to your Twilio phone number to your Flask app running on your local machine via the NGROK tunnel.
 
 ### Contributing
 If you would like to contribute to this project, please fork the repository and submit a pull request.
 
 ### License
 This project is licensed under the MIT License. See the LICENSE file for more information.
+
+### Acknowledgments
+This project was inspired by the Twilio API for WhatsApp and Flask tutorial and the OpenAI API Quickstart. Thanks to Twilio and OpenAI for providing these resources!
